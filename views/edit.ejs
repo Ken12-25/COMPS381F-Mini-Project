@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<title>Edit</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="/read" class="w3-bar-item w3-button"><b>Gp</b> Project</a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="/read" class="w3-bar-item w3-button">Home</a>
+      <a href="/new" class="w3-bar-item w3-button">Add Restaurant</a>
+      <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+    </div>
+  </div>
+</div>
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-32" id="contact">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Edit</h3>
+
+    <form action="/update" method="POST" enctype="multipart/form-data">
+
+      <input type="hidden" name="_id" value=<%=docs[0]._id%> class="w3-input w3-section w3-border">
+Name: <input name="name" type="text" required class="w3-input w3-section w3-border" value=<%=docs[0].name%> ><br>
+Cuisine: <input name="cuisine" type="text" class="w3-input w3-section w3-border" value=<%=docs[0].cuisine%> ><br>
+Street: <input name="street" type="text" class="w3-input w3-section w3-border" value=<%=docs[0].address.street%> ><br>
+Borough: <input name="borough" type="text" class="w3-input w3-section w3-border" value=<%=docs[0].borough%> ><br>
+Building: <input name="building" type="text" class="w3-input w3-section w3-border" value=<%=docs[0].address.building%> ><br>
+Zipcode: <input name="zipcode" type="text" class="w3-input w3-section w3-border" value=<%=docs[0].address.zipcode%> ><br>
+GPS Coordinates (lon.): <input name="gps_lon" type="text" class="w3-input w3-section w3-border" value=<%=docs[0].address.coord[0]%> ><br>
+GPS Coordinates (lat.): <input name="gps_lat" type="text" class="w3-input w3-section w3-border" value=<%=docs[0].address.coord[1]%> ><br>
+Photo: <input type="file" name="photo" class="w3-input w3-section w3-border"><br>
+      <button class="w3-button w3-black w3-section" type="submit">
+        <i class="fa fa-paper-plane"></i> Update
+      </button>
+      <button class="w3-button w3-black w3-section" type="button" onclick="location.href='/details?_id=<%=docs[0]._id%>'">
+        <i class="fa fa-paper-plane"></i> Back
+      </button>
+</form>
+  </div>
+
+
+<!-- End page content -->
+</div>
+
+</body>
+</html>

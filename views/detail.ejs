@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<title><%=docs[0].name%></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="/read" class="w3-bar-item w3-button"><b>Gp</b> Project</a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="/read" class="w3-bar-item w3-button">Home</a>
+      <a href="/new" class="w3-bar-item w3-button">Add Restaurant</a>
+      <a href="/searchRestaurant" class="w3-bar-item w3-button">Find Restaurant</a>
+      <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+    </div>
+  </div>
+</div>
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-32" id="contact">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><%=docs[0].name%></h3>
+<%      if (docs[0].photo && docs[0].mimetype) { %>
+<img src="data:<%=docs[0].mimetype%>;base64, <%=docs[0].photo%>"><br>
+   <%    } %>
+<p>Borough:<b><%=docs[0].borough%></b></p>
+<p>Cuisine: <b><%=docs[0].cuisine%></b></p>
+<p>Street: <b><%=docs[0].address.street%></b></p>
+<p>Building: <b><%=docs[0].address.building%></b></p>
+<p>Zipcode: <b><%=docs[0].address.zipcode%></b></p>
+<p>GPS: <b>[<%=docs[0].address.coord%>]</b></p>
+<p>Grades: <b>
+<% if(docs[0].grades){%>
+<ol>
+  <%for (var i in docs[0].grades) {%>
+<li><%=docs[0].grades[i].user%> : <%=docs[0].grades[i].score%></li>
+<% } %>
+</ol>
+<% } %>
+</b></p>
+<p>Created by: <b><%=docs[0].userid%></b></p>
+      <button class="w3-button w3-black w3-section" type="button" onclick="location.href='/rate?_id=<%=docs[0]._id%>'">
+        <i class="fa fa-paper-plane"></i> Rate Restaurant
+      </button>
+<%      if (docs[0].address.coord[0] && docs[0].address.coord[1]) { %>
+      <button class="w3-button w3-black w3-section" type="button" onclick="location.href='/map?lon=<%=docs[0].address.coord[0]%>&lat=<%=docs[0].address.coord[1]%>'">
+        <i class="fa fa-paper-plane"></i> Map
+      </button>
+<br><br>
+   <%    } %>
+      <button class="w3-button w3-black w3-section" type="button" onclick="location.href='/edit?_id=<%=docs[0]._id%>'">
+        <i class="fa fa-paper-plane"></i> Edit
+      </button>
+      <button class="w3-button w3-black w3-section" type="button" onclick="location.href='/read'">
+        <i class="fa fa-paper-plane"></i> Back
+      </button>
+      <button class="w3-button w3-black w3-section" type="button" onclick="location.href='/delete?_id=<%=docs[0]._id%>&userid=<%=docs[0].userid%>'">
+        <i class="fa fa-paper-plane"></i> Delete
+      </button>
+  </div>
+
+
+<!-- End page content -->
+</div>
+
+</body>
+</html>

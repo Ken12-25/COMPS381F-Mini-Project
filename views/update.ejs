@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<title><%=docs.name%></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="/read" class="w3-bar-item w3-button"><b>Gp</b> Project</a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="/read" class="w3-bar-item w3-button">Home</a>
+      <a href="/new" class="w3-bar-item w3-button">Add Restaurant</a>
+      <a href="/searchRestaurant" class="w3-bar-item w3-button">Find Restaurant</a>
+      <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+    </div>
+  </div>
+</div>
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-32" id="contact">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><%=docs.name%></h3>
+<%      if (docs.photo && docs.mimetype) { %>
+<img src="data:<%=docs.mimetype%>;base64, <%=docs.photo%>"><br>
+   <%    } %>
+<p>Borough:<b><%=docs.borough%></b></p>
+<p>Cuisine: <b><%=docs.cuisine%></b></p>
+<p>Street: <b><%=docs.address.street%></b></p>
+<p>Building: <b><%=docs.address.building%></b></p>
+<p>Zipcode: <b><%=docs.address.zipcode%></b></p>
+<p>GPS: <b>[<%=docs.address.coord%>]</b></p>
+<p>Grades: <b>
+<% if(docs.grades){%>
+<ol>
+  <%for (var i in docs.grades) {%>
+<li><%=docs.grades[i].user%> : <%=docs.grades[i].score%></li>
+<%
+}
+%>
+</ol>
+<%
+}
+%>
+</b></p>
+<p>Created by: <b><%=docs.userid%></b></p>
+<%      if (docs.address.coord[0] && docs.address.coord[1]) { %>
+      <button class="w3-button w3-black w3-section" type="button" onclick="location.href='/map?lon=<%=docs.address.coord[0]%>&lat=<%=docs.address.coord[1]%>'">
+        <i class="fa fa-paper-plane"></i> Map
+      </button>
+<br><br>
+   <%    } %>
+      <button class="w3-button w3-black w3-section" type="button" onclick="location.href='/details?_id=<%=docs._id%>'">
+        <i class="fa fa-paper-plane"></i> Back
+      </button>
+  </div>
+
+
+<!-- End page content -->
+</div>
+
+</body>
+</html>

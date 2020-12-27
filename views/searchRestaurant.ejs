@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<% var count = 0;%>
+<html>
+<title>Home</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="/read" class="w3-bar-item w3-button"><b>Gp</b> Project</a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="/read" class="w3-bar-item w3-button">Home</a>
+      <a href="/new" class="w3-bar-item w3-button">Add Restaurant</a>
+      <a href="/searchRestaurant" class="w3-bar-item w3-button">Find Restaurant</a>
+      <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+    </div>
+  </div>
+</div>
+      <% for (var doc of docs) {
+      if (doc.name == restName) {
+      count ++;
+      }
+      }%>
+
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-32" id="contact">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Showing <%=count%> documents (criteria: {"name":"<%=restName%>"})
+      </h3>
+
+    <table border="1">
+        <tr><th>Restaurant Name</th></tr>
+      <% for (var doc of docs) {
+       if (doc.name == restName) {%>
+      <tr><td> <a href="/details?_id=<%=doc._id%>"><%=doc.name%></a></td></tr>
+      <% 
+      }
+      }%>
+</table>
+</div>
+
+</body>
+</html>

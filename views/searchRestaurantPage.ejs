@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<title>Search Restaurant</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="/read" class="w3-bar-item w3-button"><b>Gp</b> Project</a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="/read" class="w3-bar-item w3-button">Home</a>
+      <a href="/new" class="w3-bar-item w3-button">Add Restaurant</a>
+      <a href="/searchRestaurant" class="w3-bar-item w3-button">Find Restaurant</a>
+      <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+    </div>
+  </div>
+</div>
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-32" id="contact">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Search Restaurant</h3>
+    <form action="/pro_searchRestaurant" method="POST" enctype="multipart/form-data">
+      <input class="w3-input w3-section w3-border" type="text" placeholder="Name:" required name="restname">
+      <button class="w3-button w3-black w3-section" type="submit">
+        <i class="fa fa-paper-plane"></i> Submit
+      </button>
+      <button class="w3-button w3-black w3-section" type="button" onclick="location.href='/read'">
+        <i class="fa fa-paper-plane"></i> Back
+      </button>
+    </form>
+  </div>
+
+
+<!-- End page content -->
+</div>
+
+</body>
+</html>
