@@ -7,7 +7,7 @@ let express = require('express');
 var cookieSession = require('cookie-session')
 let app = express();
 app.use(formidable());
-const mongourl = 'mongodb+srv://sch:1225@cluster0.1zxyy.mongodb.net/&#39;Project?retryWrites=true&amp;w=majority';
+const mongourl = '';
 const dbName = 'Project';
 const SECRETKEY = 'This my a gp project';
 
